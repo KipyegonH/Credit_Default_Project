@@ -91,6 +91,13 @@ Build and run the Docker container for the service:
    ```bash
    docker run -d -p 9696:9696 --name Credit credit-default.
    ```
+### Docker Build Success
+
+Below are the screenshots demonstrating the successful Docker image builds for the project:
+
+![Docker Build Success 1](https://github.com/KipyegonH/Credit_Default_Project/blob/main/images/successful%20builddocker%20images.1.jpg)
+
+![Docker Build Success 2](https://github.com/KipyegonH/Credit_Default_Project/blob/main/images/successful%20build%20docker%20image2.jpg)
 
 ---
 
