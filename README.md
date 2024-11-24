@@ -111,8 +111,7 @@ docker build -t credit-card-default .
 #### Step 3: Run the Docker Container
 Start the Docker container and expose it on port `9696`:
 ```bash
-docker run -p 9696:9696 credit-card-default
-```
+docker run -d -p 9696:9696 --name Credit credit-card-default.
 
 #### Step 4: Access the Service
 The service will be available at [http://localhost:9696](http://localhost:9696).

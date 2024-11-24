@@ -4,14 +4,17 @@ FROM python:3.8-slim
 WORKDIR /app
 
 # 3. Copy Pipfile and Pipfile.lock from environment_project to /app
-COPY Pipfile Pipfile.lock /app/
+COPY requirements.txt .
 
 # 4. Install dependencies using Pipenv
-RUN pip install pipenv && pipenv install --deploy --system
+RUN pip install --no-cache-dir -r requirements.txt
 
 # 5. Copy the rest of the project files from environment_project to /app
-COPY environment_project /app/
+COPY predict.py .
+Copy dv.pkl .
+copy xgb_model.pkl .
+
 EXPOSE 9696
 
 # 7. Command to run the prediction script
-CMD ["pipenv", "run", "python", "predict.py"]
+CMD ["python", "predict.py"]
