@@ -126,9 +126,11 @@ docker build -t credit-default .
 Start the Docker container and expose it on port `9696`:
 ```bash
 docker run -d -p 9696:9696 --name Credit credit-default.
-
+```
 #### Step 4: Access the Service
+```
 The service will be available at [http://localhost:9696](http://localhost:9696).
+```
 
 ### Deploy to AWS Elastic Beanstalk
 
