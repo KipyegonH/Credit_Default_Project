@@ -4,7 +4,7 @@ FROM python:3.8-slim
 WORKDIR /app
 
 # 3. Copy Pipfile and Pipfile.lock from environment_project to /app
-COPY environment_project/Pipfile environment_project/Pipfile.lock /app/
+COPY Pipfile Pipfile.lock /app/
 
 # 4. Install dependencies using Pipenv
 RUN pip install pipenv && pipenv install --deploy --system
