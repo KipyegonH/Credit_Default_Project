@@ -89,7 +89,7 @@ Build and run the Docker container for the service:
    ```
 3. Run the container:
    ```bash
-docker run -d -p 9696:9696 --name Credit credit-default.
+   docker run -d -p 9696:9696 --name Credit credit-default.
    ```
 
 ---
