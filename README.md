@@ -108,7 +108,7 @@ Refer to `data_dictionary.md` for detailed information about the dataset fields 
 - Model selection and tuning
 - Insights and visualizations
 
----## Deployment
+## Deployment
 This project can be deployed locally using Docker or to the cloud using AWS Elastic Beanstalk. Below are the detailed steps for both methods:
 
 ### Deploy Locally with Docker
