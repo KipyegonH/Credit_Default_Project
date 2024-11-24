@@ -1,6 +1,6 @@
 # Data Dictionary
 
-This document describes the features in the dataset **Default of Credit Card Clients**.
+This document describes the features in the dataset **Default of Credit Clients**.
 
 | **Column Name**              | **Type**   | **Description**                                                              | **Notes**                               |
 |------------------------------|------------|------------------------------------------------------------------------------|----------------------------------------|

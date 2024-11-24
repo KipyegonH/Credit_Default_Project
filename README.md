@@ -1,57 +1,19 @@
 
-# Credit Card Default Prediction
-
-This project aims to predict the likelihood of a client defaulting on their credit card payment next month using machine learning models. The project involves data cleaning, exploratory data analysis (EDA), feature engineering, and model training.
-
-## Dataset
-[Default of Credit Card Clients Dataset](https://archive.ics.uci.edu/static/public/350/default+of+credit+card+clients.zip)
-
-## Table of Contents
-1. [Problem Definition](#problem-definition)
-2. [Project Overview](#project-overview)
-3. [Dataset Description](#dataset-description)
-4. [Project Structure](#project-structure)
-5. [Setup and Installation](#setup-and-installation)
-6. [Usage](#usage)
-7. [Deployment](#deployment)
-8. [Contributing](#contributing)
-9. [License](#license)
-
-## Problem Definition
-
-Credit card defaulting is a major risk for financial institutions. When clients fail to meet their payment obligations, it affects the profitability and sustainability of credit systems. Financial institutions require predictive systems to identify high-risk clients in advance, enabling them to make informed decisions such as adjusting credit limits, changing repayment plans, or taking preemptive actions.
-
-This project addresses the problem of predicting credit card defaults by leveraging a dataset of 30,000 clients, containing their demographic information, credit history, and repayment patterns. The key objective is to develop a machine learning model that accurately predicts whether a client will default on their credit card payment in the following month.
-
-### Business Significance
-Accurate predictions can:
-1. Reduce financial losses by proactively managing high-risk clients.
-2. Optimize credit allocation and customer risk profiling.
-3. Support strategic decision-making by providing actionable insights into repayment behaviors.
+# Credit Default Prediction Project
 
 ## Project Overview
-Credit card defaults pose a significant risk to financial institutions. This project uses a dataset of credit card clients to build a predictive model for identifying potential defaults. The goal is to help financial institutions mitigate risk and make data-driven decisions.
 
-## Dataset Description
-The dataset contains information on 30,000 credit card clients in Taiwan from April to September 2005. It includes demographic details, billing information, and repayment status. The target variable is `default_payment`, indicating if a client will default next month.
-
-### Key Features
-- **Demographics**: Gender, age, education level, and marital status.
-- **Credit and Billing**: Credit limit, past payments, and bill amounts.
-- **Target**: Whether the client defaulted (1 = Yes, 0 = No).
-
-For detailed information, refer to the [Data Dictionary](./Data_Dictionary.md).
+This project uses credit client data to build a machine learning model that predicts whether a client will default on their payment in the next month. The workflow includes data preprocessing, exploratory data analysis (EDA), feature engineering, model training, and serving predictions using an XGBoost model.
 
 ## Project Structure
-```
-ML PROJECT/
+
+```plaintext
+Credit Default Prediction Project/
 │
 ├── data/                      # Contains the dataset
-│   └── default of credit card clients.xls
+│   └── default of credit clients.xls
 │
 ├── environment_project/       # Folder with your model, scripts, and dependencies
-│   ├── Pipfile                # Pipenv file for managing dependencies
-│   ├── Pipfile.lock           # Lock file for consistent environments
 │   ├── Dockerfile             # Dockerfile for running the service
 │   ├── train.py               # Script for training and saving the model
 │   ├── predict.py             # Script for serving predictions
@@ -59,42 +21,94 @@ ML PROJECT/
 │   ├── dv.pkl                 # DictVectorizer model
 │   └── requirements.txt       # List of Python dependencies
 │
+├── venv/                      # Virtual environment folder
+│   ├── Scripts/               # Scripts for activating the environment
+│   ├── lib/                   # Installed Python libraries
+│   └── pyvenv.cfg             # Configuration for the virtual environment
+│
 ├── data_dictionary.md         # Data dictionary
 ├── notebook.ipynb             # Jupyter notebook for EDA, model selection, and feature engineering
 ├── README.md                  # Project documentation
 ```
 
+---
+
 ## Setup and Installation
-1. Clone the repository:
+
+### 1. Clone the Repository
+Clone this repository to your local machine:
+```bash
+git clone https://github.com/your-repo-url.git
+cd "Credit Default Prediction Project"
+```
+
+### 2. Set Up Virtual Environment
+The project uses a Python virtual environment to manage dependencies.
+
+#### Activate the virtual environment
+On **Windows**:
+```bash
+venv\Scripts\activate
+```
+On **Linux/MacOS**:
+```bash
+source venv/bin/activate
+```
+
+#### Install dependencies
+After activating the virtual environment, install the required dependencies:
+```bash
+pip install -r environment_project/requirements.txt
+```
+
+---
+
+## Running the Project
+
+### 1. Train the Model
+Run the `train.py` script to train and save the model:
+```bash
+python environment_project/train.py
+```
+
+### 2. Serve Predictions
+Use the `predict.py` script to serve predictions:
+```bash
+python environment_project/predict.py
+```
+
+---
+
+## Docker Deployment
+
+Build and run the Docker container for the service:
+1. Navigate to the `environment_project/` folder.
+2. Build the Docker image:
    ```bash
-   git clone https://github.com/KipyegonH/mlzoomcamp_project.git
+   docker build -t credit-default.
    ```
-2. Navigate to the project directory:
+3. Run the container:
    ```bash
-   cd 'ML PROJECT'
-   ```
-3. Install dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
-4. Run the project in Docker (optional):
-   ```bash
-   docker build -t credit-card-default .
-   docker run -p 9696:9696 credit-card-default
+docker run -d -p 9696:9696 --name Credit credit-default.
    ```
 
-## Usage
-- **Train the model**:
-  ```bash
-  python train.py
-  ```
-- **Serve predictions**:
-  ```bash
-  python predict.py
-  ```
-- Access the web service at `http://localhost:9696`.
+---
 
-## Deployment
+## Data Dictionary
+
+Refer to `data_dictionary.md` for detailed information about the dataset fields and their descriptions.
+
+---
+
+## Notebook Analysis
+
+`notebook.ipynb` contains:
+- Exploratory Data Analysis (EDA)
+- Feature engineering
+- Model selection and tuning
+- Insights and visualizations
+
+---## Deployment
 This project can be deployed locally using Docker or to the cloud using AWS Elastic Beanstalk. Below are the detailed steps for both methods:
 
 ### Deploy Locally with Docker
@@ -105,13 +119,13 @@ Ensure Docker is installed on your system. If not, refer to the [Docker installa
 #### Step 2: Build the Docker Image
 Run the following command to create a Docker image for the project:
 ```bash
-docker build -t credit-card-default .
+docker build -t credit-default .
 ```
 
 #### Step 3: Run the Docker Container
 Start the Docker container and expose it on port `9696`:
 ```bash
-docker run -d -p 9696:9696 --name Credit credit-card-default.
+docker run -d -p 9696:9696 --name Credit credit-default.
 
 #### Step 4: Access the Service
 The service will be available at [http://localhost:9696](http://localhost:9696).
@@ -127,7 +141,7 @@ In the project directory, run:
 eb init
 ```
 - Choose your AWS region.
-- Enter an application name (e.g., `credit-card-default`).
+- Enter an application name (e.g., `credit-default`).
 - Select `Docker` as the platform.
 - Set up SSH access if required for troubleshooting.
 
@@ -156,8 +170,9 @@ eb open
   ```
 - To terminate the environment when no longer needed:
   ```bash
-  eb terminate credit-card-default-env
+  eb terminate credit-default-env
   ```
 
 ## Contributing
 Contributions are welcome! Feel free to submit a pull request or report issues.
+
